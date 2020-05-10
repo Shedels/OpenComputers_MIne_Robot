@@ -1,0 +1,70 @@
+local r = require("robot") 
+
+print("start") 
+
+loop = 0
+road = 0
+
+while loop ~= 1 do 
+r.swing() 
+r.forward() 
+r.turnRight() 
+for i = 0, 3, 1 do 
+r.swingUp()
+r.swingDown() 
+r.swing()
+r.forward()
+end
+
+r.swingDown()
+r.swingUp()
+r.up() 
+r.swingUp()
+r.up()
+r.swingUp()
+r.up()
+
+
+r.turnLeft()
+r.turnLeft()
+r.swing()
+r.swingUp()
+r.swingDown()
+
+
+for i = 0, 3, 1 do
+
+r.swingUp()
+r.swingDown()
+r.swing()
+r.forward()
+end 
+
+r.swingUp()
+r.swingDown()
+r.down()
+r.swingDown()
+r.down()
+r.swingDown()
+r.down()
+
+
+r.turnRight()
+
+road = road + 1
+loop = loop + 1
+
+
+
+end 
+
+naz = 0
+r.turnRight()
+r.turnRight()
+
+
+while naz ~= road do
+naz = naz + 1
+r.forward()
+
+end
