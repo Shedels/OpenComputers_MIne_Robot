@@ -1,46 +1,49 @@
 local r = require("robot") 
 
+
 print("Hello qurier started")
 print("Skoko w niz = ") 
-down = io.read()
+down = tonumber(io.read())
 print("Dlina =") 
-dlin = io.read()
+dlin = tonumber(io.read())
 print("Sherina")
-sher = io.read()
+sher = tonumber(io.read())
 
 
-local l = 0
+l = 0
 while l ~= down do 
 
 r.swingDown()
 r.down()
 
-for i2 = 0, i2 == sher do
+for i = 2 , sher do
 
-for i=0, i == dlin, 1 do 
+for i = 2, dlin do 
 r.swing()
 r.forward()
+
 end
-r.tunrRight()
-r.swing()
-t.forward()
-r.tunrRight()
-for i=0, i == dlin, 1 do 
+r.turnRight()
 r.swing()
 r.forward()
-end
-r.tunrLeft() 
+r.turnRight()
+
+for i = 2, dlin do 
 r.swing()
-t.forward()
-r.tunrLeft()
+r.forward()
 
 end
+
+r.turnLeft()
+r.swing()
+r.forward()
+r.turnLeft() 
+
 end
-
-
-
-
-
-
-
+r.turnLeft()
+for i = -1 , sher do 
+r.forward()
+end
+r.turnRight()
+l = l + 1
 end
