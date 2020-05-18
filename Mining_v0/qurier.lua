@@ -12,7 +12,7 @@ sher = tonumber(io.read())
 
 l = 0
 while l ~= down do 
-
+l = l + 1
 r.swingDown()
 r.down()
 
@@ -45,5 +45,5 @@ for i = -1 , sher do
 r.forward()
 end
 r.turnRight()
-l = l + 1
+
 end
