@@ -39,23 +39,35 @@ r.forward()
 r.turnRight() 
 r.forward()
 end
+print(r.space(64))
 
-
-
-r.select(32)
-if r.space(32) < 32 then   
-    for i=5, 32 do 
+for i = 0, 1 do
+if r.space(64) < 63 then 
+print(r.space(64))
+r.select(64)  
+    for i=6, 64 do 
       r.select(1)
       if r.compareTo(i) == true then
         r.select(i)
-        r.dropUp()  
-      end
-       r.select(1)
+        r.dropDown()  
+      else
+       
     end
 
-else 
-
+end
+end
+end
+if r.space(64) < 63 then   
+  r.select(5)
+  r.placeUp()
+  r.select(1)
+    for i=6, 64 do 
+      r.select(1)
+     
+        r.select(i)
+        r.dropUp()  
 r.space(1)
+end
 end
 r.swing() 
 r.forward() 
@@ -98,6 +110,7 @@ r.swingDown()
 r.down()
 r.swingDown()
 r.down()
+
 
 loop = loop + 1
 r.turnRight()
