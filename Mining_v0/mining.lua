@@ -1,14 +1,16 @@
-local r = require("robot") 
-local computer = require("computer")
-
+ local r = require("robot")
+ local computer = require("computer")
+ local component = require("component")
+ local sides = require("sides")
+ 
 
 print("start") 
 
 loop = 0
 road = 0
 
-while loop ~= 300  do
-
+while loop ~= 1  do
+r.select(1)
 computer.energy()
 if computer.energy() <  5000 then 
 r.select(2)
@@ -27,7 +29,7 @@ r.place()
 r.use()
 r.turnLeft()
 r.forward()
-os.sleep(40)
+os.sleep(15)
 
 r.turnRight()
 r.select(3)
@@ -39,42 +41,64 @@ r.forward()
 r.turnRight() 
 r.forward()
 end
-print(r.space(64))
 
-for i = 0, 1 do
-if r.space(64) < 63 then 
-print(r.space(64))
-r.select(64)  
-    for i=6, 64 do 
-      r.select(1)
-      if r.compareTo(i) == true then
-        r.select(i)
-        r.dropDown()  
-      else
-       
+--очистка инв--
+if r.space(32) < 64 then   
+    for i=1, 32 do 
+    item = component.inventory_controller.getStackInInternalSlot(i)
+      if item.name == "minecraft:cobblestone" or item.name == "minecraft:dirt" or item.name== "minecraft:planks" or 
+         item.name == "minecraft:gravel" or item.name == "minecraft:stone" or item.name == "minecraft:mossy_cobblestone"
+      then 
+      
+      r.select(i)
+    r.dropDown() 
+    else 
+    break     
     end
+    r.select(1)
+end
+ r.select(1)
+end
+ -- кнец --
 
-end
-end
-end
-if r.space(64) < 63 then   
+-- в сундук --
+if r.space(32) < 63 then   
   r.select(5)
   r.placeUp()
   r.select(1)
-    for i=6, 64 do 
+    for i=6, 32 do 
       r.select(1)
      
         r.select(i)
         r.dropUp()  
 r.space(1)
 end
-end
+r.space(1)
+end 
+-- конец --
+
 r.swing() 
 r.forward() 
 r.turnRight() 
 for i = 0, 3, 1 do 
+
+if r.detect() == true then
+    while r.detect() == true do
+      r.swing()
+
+    end
+end
+
 r.swingUp()
 r.swingDown() 
+
+if r.detect() == true then
+    while r.detect() == true do
+      r.swing()
+
+    end
+end
+
 r.swing()
 r.forward()
 end
@@ -96,6 +120,13 @@ r.swingDown()
 
 
 for i = 0, 3, 1 do
+
+if r.detect() == true then
+    while r.detect() == true do
+      r.swing()
+
+    end
+end
 
 r.swingUp()
 r.swingDown()
